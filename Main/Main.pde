@@ -29,13 +29,18 @@ class Rock extends Thing {
 }
 
 public class LivingRock extends Rock implements Moveable {
+  float speed;
   LivingRock(float x, float y) {
     super(x, y);
+    speed = 0.5;
   }
   void move() {
       /* ONE PERSON WRITE THIS */
-      this.x = this.x + 5;
-      this.y = this.y + 5;
+      if (this.x < 0 || this.y < 0 || this.x > 1000 || this.y > 400){
+        this.speed = - this.speed;
+      }
+      this.x = this.x + this.speed;
+      this.y = this.y + this.speed;
     }
   }
 
