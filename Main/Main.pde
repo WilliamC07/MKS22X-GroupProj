@@ -49,7 +49,8 @@ class Ball extends Thing implements Moveable {
   }
 
   void move() {
-    /* ONE PERSON WRITE THIS */
+    this.x = this.x + 1;
+    this.y = this.y + 1;
   }
 }
 
