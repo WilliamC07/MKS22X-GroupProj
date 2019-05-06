@@ -40,11 +40,13 @@ public class LivingRock extends Rock implements Moveable {
   }
 
 class Ball extends Thing implements Moveable {
-  float slope;
+  float speed, xDirection, yDirection;
   
   Ball(float x, float y) {
     super(x, y);
-    slope = .002;
+    speed = random(20);
+    this.xDirection = random(2) == 0 ? 1 : -1;
+    this.yDirection = random(2) == 0 ? 1 : -1;
   }
 
   void display() {
@@ -53,12 +55,14 @@ class Ball extends Thing implements Moveable {
     }
     
   void move() {
-    this.x = this.x + this.x * slope;
-    this.y = this.y + this.y * slope;
+    this.x += speed * xDirection;
+    this.y += speed * yDirection;
     
-    // check for out of bounds
-    if(this.x > width || this.x < 0 || this.y > height || this.y < 0){
-      this.slope = -this.slope;
+    if(this.x < 0 || this.x > width){
+      xDirection *= -1;
+    }
+    if(this.y < 0 || this.y > height){
+      yDirection *= -1;
     }
   }
 }
