@@ -17,13 +17,13 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
-  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon"};
+  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon", "Pikachu", "Moostache"};
   String shape;
   float size;
   Rock(float x, float y) {
     super(x, y);
     shape = ary[(int)random(ary.length)];
-    size = random(75);
+    size = random(20) + 30;
   }
 
   void display() { 
@@ -39,6 +39,10 @@ class Rock extends Thing {
        makeTrapezoid(x, y);}
      if(shape.equals("Hexagon")){
        makeHexagon(x, y);}
+     if(shape.equals("Pikachu")){
+       image(loadImage("Pikachu.jpg"), x, y, size, size);}
+     if(shape.equals("Moostache")){
+       image(loadImage("Moostache.png"), x, y, size, size);}
     fill(255,0,0);
   }
   void makeTriangle(float x, float y){
