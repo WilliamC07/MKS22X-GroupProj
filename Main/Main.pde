@@ -59,7 +59,12 @@ class Ball extends Thing implements Moveable {
     
   void move() {
     this.x = this.x + this.x * slope;
-    this.y = this.y + this.y * slope;    
+    this.y = this.y + this.y * slope;
+    
+    // check for out of bounds
+    if(this.x > width || this.x < 0 || this.y > height || this.y < 0){
+      this.slope = -this.slope;
+    }
   }
 }
 
