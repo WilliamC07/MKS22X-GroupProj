@@ -23,6 +23,8 @@ class Rock extends Thing {
 
   void display() { 
     /* ONE PERSON WRITE THIS */
+    fill(92, 0, 0);
+    ellipse(x,y, 20, 20);
   }
 }
 
@@ -31,9 +33,11 @@ public class LivingRock extends Rock implements Moveable {
     super(x, y);
   }
   void move() {
-    /* ONE PERSON WRITE THIS */
+      /* ONE PERSON WRITE THIS */
+      this.x = this.x + 5;
+      this.y = this.y + 5;
+    }
   }
-}
 
 class Ball extends Thing implements Moveable {
   float slope;
@@ -44,14 +48,13 @@ class Ball extends Thing implements Moveable {
   }
 
   void display() {
-    /* ONE PERSON WRITE THIS */
-    ellipse(x,y,50,50);
-  }
-
+      /* ONE PERSON WRITE THIS */
+      ellipse(x,y,50,50);
+    }
+    
   void move() {
     this.x = this.x + this.x * slope;
-    this.y = this.y + this.y * slope;
-    
+    this.y = this.y + this.y * slope;    
   }
 }
 
