@@ -32,8 +32,6 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     /* ONE PERSON WRITE THIS */
-    x += random(-5,5);
-    y += random(-5,5);
   }
 }
 
@@ -45,12 +43,10 @@ class Ball extends Thing implements Moveable {
 
   void display() {
     /* ONE PERSON WRITE THIS */
-    ellipse(x,y,50,50);
   }
 
   void move() {
-    this.x = this.x + 1;
-    this.y = this.y + 1;
+    /* ONE PERSON WRITE THIS */
   }
 }
 
