@@ -32,10 +32,16 @@ class Rock extends Thing {
       ellipse(x,y, 20, 20);}
     if(shape.equals("Triangle")){
     makeTriangle(x, y);}
+    if(shape.equals("Pentagon")){
+      makePentagon(x, y);}
     fill(255,0,0);
   }
   void makeTriangle(float x, float y){
     triangle(x - 20, y + 20, x, y, x + 20, y + 20);
+}
+  void makePentagon(float x, float y){
+    makeTriangle(x,y);
+    rect(x - 20, y + 20, 40, 40);
 }
 }
 
@@ -90,7 +96,7 @@ ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 
 void setup() {
-  String ary[] = {"Circle", "Triangle"};
+  String ary[] = {"Circle", "Triangle", "Pentagon"};
   size(1000, 400);
 
   thingsToDisplay = new ArrayList<Displayable>();
