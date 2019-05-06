@@ -36,9 +36,11 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Moveable {
+  float slope;
+  
   Ball(float x, float y) {
-
     super(x, y);
+    slope = .002;
   }
 
   void display() {
@@ -47,8 +49,9 @@ class Ball extends Thing implements Moveable {
   }
 
   void move() {
-    this.x = this.x + 1;
-    this.y = this.y + 1;
+    this.x = this.x + this.x * slope;
+    this.y = this.y + this.y * slope;
+    
   }
 }
 
@@ -58,7 +61,7 @@ ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 
 void setup() {
-  size(1000, 800);
+  size(1000, 400);
 
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
