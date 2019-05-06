@@ -17,22 +17,33 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
-  Rock(float x, float y) {
+  String shape;
+  float size;
+  Rock(float x, float y, String shape, float size) {
     super(x, y);
+    this.shape = shape;
+    this.size = size;
   }
 
   void display() { 
     /* ONE PERSON WRITE THIS */
     fill(92, 0, 0);
-    ellipse(x,y, 20, 20);
+    if(shape.equals("Circle")){
+      ellipse(x,y, 20, 20);}
+    if(shape.equals("Triangle")){
+    makeTriangle(x, y);}
+    fill(255,0,0);
   }
+  void makeTriangle(float x, float y){
+    triangle(x - 20, y + 20, x, y, x + 20, y + 20);
+}
 }
 
 public class LivingRock extends Rock implements Moveable {
   float speedx;
   float speedy;
-  LivingRock(float x, float y) {
-    super(x, y);
+  LivingRock(float x, float y, String shape, float size) {
+    super(x, y, shape, size);
     speedx = 5;
     speedy = 2;
   }
@@ -40,8 +51,8 @@ public class LivingRock extends Rock implements Moveable {
       /* ONE PERSON WRITE THIS */
       if (this.x < 0 || this.x > width) this.speedx = -this.speedx;
       if (this.y < 0 || this.y > height) this.speedy = -this.speedy;
-      this.x = this.x + this.speedx;
-      this.y = this.y + this.speedy;
+      this.x = this.x +  this.speedx;
+      this.y = this.y  + this.speedy;
     }
   }
 
@@ -79,6 +90,7 @@ ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 
 void setup() {
+  String ary[] = {"Circle", "Triangle"};
   size(1000, 400);
 
   thingsToDisplay = new ArrayList<Displayable>();
@@ -87,11 +99,11 @@ void setup() {
     Ball b = new Ball(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(b);
     thingsToMove.add(b);
-    Rock r = new Rock(50+random(width-100), 50+random(height-100));
+    Rock r = new Rock(50+random(width-100), 50+random(height-100), ary[(int)random(ary.length)], random(75));
     thingsToDisplay.add(r);
   }
 
-  LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
+  LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100), ary[(int) random(ary.length)], random(75));
   thingsToDisplay.add(m);
   thingsToMove.add(m);
 }
