@@ -43,6 +43,8 @@ class Ball extends Thing implements Moveable {
 
   void display() {
     /* ONE PERSON WRITE THIS */
+    fill(random(255),random(255),random(255),170);
+    noStroke();
     ellipse(x,y,50,50);
   }
 
@@ -79,6 +81,7 @@ void draw() {
   background(255);
 
   for (Displayable thing : thingsToDisplay) {
+    
     thing.display();
   }
   for (Moveable thing : thingsToMove) {
