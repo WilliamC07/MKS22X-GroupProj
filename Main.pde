@@ -97,18 +97,16 @@ public class LivingRock extends Rock implements Moveable {
 
 class Ball extends Thing implements Moveable {
   float speed, xDirection, yDirection;
-  color ballc;
+  
   Ball(float x, float y) {
     super(x, y);
     speed = random(20);
     this.xDirection = random(2) == 0 ? 1 : -1;
     this.yDirection = random(2) == 0 ? 1 : -1;
-    this.ballc = color(random(256),random(256),random(256));
   }
 
   void display() {
       /* ONE PERSON WRITE THIS */
-      fill(this.ballc);
       ellipse(x,y,50,50);
     }
     
@@ -152,7 +150,6 @@ void draw() {
   background(255);
 
   for (Displayable thing : thingsToDisplay) {
-    
     thing.display();
   }
   for (Moveable thing : thingsToMove) {
