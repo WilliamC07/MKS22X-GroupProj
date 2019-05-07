@@ -17,41 +17,24 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
-  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon", "Pikachu", "Moostache", "Rockman"};
-  String shape;
   float size;
+  PImage shape;
   Rock(float x, float y) {
     super(x, y);
-    shape = ary[(int)random(ary.length)];
+    PImage img1 = loadImage("rock1.jpg");
+    PImage img2 = loadImage("rock2.jpg");
+    if ((int)random(0,2) % 2 == 1){
+      shape = img1;
+    }
+    else{
+      shape = img2;
+    }
     size = random(20) + 30;
   }
 
   void display() { 
     /* ONE PERSON WRITE THIS */
-    fill(234);
-    if(shape.equals("Circle")){
-      ellipse(x,y, 20, 20);}
-    if(shape.equals("Triangle")){
-    makeTriangle(x, y);}
-    if(shape.equals("Pentagon")){
-      makePentagon(x, y);}
-     if(shape.equals("Trapezoid")){
-       makeTrapezoid(x, y);}
-     if(shape.equals("Hexagon")){
-       makeHexagon(x, y);}
-     if(shape.equals("Pikachu")){
-       image(loadImage("Pikachu.jpg"), x, y, size, size);}
-     if(shape.equals("Moostache")){
-       image(loadImage("Moostache.png"), x, y, size, size);}
-     if(shape.equals("Rockman")){
-       rect(x, y, 20, 20);
-       ellipse(x + 10, y - 10, 10, 10);
-       rect(x - 10, y, 10, 10);
-       rect(x + 20, y, 10, 10);
-       rect(x, y + 20, 10, 10);
-       rect(x + 10, y + 20, 10, 10);
-     }
-    fill(255,0,0);
+    image(shape, x, y, size, size);
   }
   void makeTriangle(float x, float y){
     triangle(x - 20, y + 20, x, y, x + 20, y + 20);
