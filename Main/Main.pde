@@ -117,11 +117,11 @@ void setup() {
     
     Ball b;
     if (i < 5){
-      b = new Ball(50+random(width-100), 50+random(height-100));
+      b = new BallA(50+random(width-100), 50+random(height-100));
       // to be updated with subclasses of Ball
     }
     else{
-      b = new Ball(50+random(width-100), 50+random(height-100));
+      b = new BallB(50+random(width-100), 50+random(height-100));
     }    
     thingsToDisplay.add(b);
     thingsToMove.add(b);
