@@ -21,8 +21,8 @@ class Rock extends Thing {
   PImage shape;
   Rock(float x, float y) {
     super(x, y);
-    PImage img1 = loadImage("rock1.jpg");
-    PImage img2 = loadImage("rock2.jpg");
+    PImage img1 = loadImage("rock1.png");
+    PImage img2 = loadImage("rock2.png");
     if ((int)random(0,2) % 2 == 1){
       shape = img1;
     }
