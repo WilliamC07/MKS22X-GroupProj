@@ -5,3 +5,7 @@ William Cao:
 Peihua Huang:
 5/6/19: Moving LivingRock (bounces off wall)
 5/7/19: Implemented the rock changes
+
+Fakharyar Khan:
+5/6/19: Display Rock (multiple shapes)
+5/7/19: Living rock eyes
