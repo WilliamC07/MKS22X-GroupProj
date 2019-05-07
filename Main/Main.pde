@@ -131,15 +131,18 @@ void setup() {
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
+    Ball b;
     if (i < 5){
-      Ball b = new Ball(50+random(width-100), 50+random(height-100));
-      thingsToDisplay.add(b);
-      thingsToMove.add(b);
+      b = new Ball(50+random(width-100), 50+random(height-100));
+      // to be updated with subclasses of Ball
     }
     else{
-      Rock r = new Rock(50+random(width-100), 50+random(height-100));
-      thingsToDisplay.add(r);
-    }
+      b = new Ball(50+random(width-100), 50+random(height-100));
+    }      
+    thingsToDisplay.add(b);
+    thingsToMove.add(b);
+    Rock r = new Rock(50+random(width-100), 50+random(height-100));
+    thingsToDisplay.add(r);
   }
 
   LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
