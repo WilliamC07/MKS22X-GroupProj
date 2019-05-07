@@ -12,12 +12,12 @@ interface Collideable{
 
 abstract class Thing implements Displayable, Collideable {
   float x, y;//Position of the Thing
-  float radius;
+  float size;
 
-  Thing(float x, float y, float radius) {
+  Thing(float x, float y, float size) {
     this.x = x;
     this.y = y;
-    this.radius = radius;
+    this.size = size;
   }
   
   @Override
@@ -94,7 +94,7 @@ class Ball extends Thing implements Moveable {
   float speed, xDirection, yDirection;
   color ballc;
   Ball(float x, float y) {
-    super(x, y);
+    super(x, y, 50);
     speed = random(20);
     this.xDirection = random(2) == 0 ? 1 : -1;
     this.yDirection = random(2) == 0 ? 1 : -1;
@@ -104,7 +104,7 @@ class Ball extends Thing implements Moveable {
   void display() {
       /* ONE PERSON WRITE THIS */
       fill(this.ballc);
-      ellipse(x,y,50,50);
+      ellipse(x,y, this.size, this.size);
     }
     
   void move() {
