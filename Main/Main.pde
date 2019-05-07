@@ -139,12 +139,14 @@ class Ball extends Thing implements Moveable {
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
+ArrayList<Collideable> collideables;
 
 void setup() {
   size(1000, 400);
 
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
+  collideables = new ArrayList<Collideable>();
   for (int i = 0; i < 10; i++) {
     Ball b;
     if (i < 5){
@@ -156,6 +158,7 @@ void setup() {
     }      
     thingsToDisplay.add(b);
     thingsToMove.add(b);
+    collideables.add(b);
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
   }
@@ -163,6 +166,7 @@ void setup() {
   LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
   thingsToDisplay.add(m);
   thingsToMove.add(m);
+  collideables.add(m);
 }
 
 void draw() {
