@@ -23,12 +23,8 @@ abstract class Thing implements Displayable, Collideable {
   @Override
   boolean isTouching(Thing other){
     // touches when the sum of the size of the other Thing and this Thing is less than the distance between center
-    return distance(other, this) >= other.size + this.size;
-  }
-  
-  // Processing doesn't allow the method to be static unless the class is also static
-  float distance(Thing t1, Thing t2){
-    return (float) Math.sqrt(Math.pow(t1.x - t2.x, 2) + Math.pow(t1.y - t2.x, 2)); 
+    // division by 2 since size is the width and height, but we want radius
+    return dist(this.x, this.y, other.x, other.y) <= (other.size + this.size) / 2;
   }
   
   abstract void display();
@@ -110,15 +106,26 @@ class Ball extends Thing implements Moveable {
   color ballc;
   Ball(float x, float y) {
     super(x, y, 50);
-    speed = random(20);
+    speed = 5;
     this.xDirection = random(2) == 0 ? 1 : -1;
     this.yDirection = random(2) == 0 ? 1 : -1;
     this.ballc = color(random(256),random(256),random(256));
   }
 
   void display() {
-      /* ONE PERSON WRITE THIS */
-      fill(this.ballc);
+      // check for collision
+      boolean collided = false;
+      for(Collideable c : collideables){
+        if(c.isTouching(this)){
+          collided = true;
+        }
+      }
+      
+      if(collided){
+        fill(255, 0, 0);
+      }else{
+        fill(this.ballc);
+      }
       ellipse(x,y, this.size, this.size);
     }
     
@@ -148,6 +155,7 @@ void setup() {
   thingsToMove = new ArrayList<Moveable>();
   collideables = new ArrayList<Collideable>();
   for (int i = 0; i < 10; i++) {
+    
     Ball b;
     if (i < 5){
       b = new Ball(50+random(width-100), 50+random(height-100));
@@ -155,12 +163,13 @@ void setup() {
     }
     else{
       b = new Ball(50+random(width-100), 50+random(height-100));
-    }      
+    }    
     thingsToDisplay.add(b);
     thingsToMove.add(b);
-    collideables.add(b);
+    
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
+    collideables.add(r);
   }
 
   LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
