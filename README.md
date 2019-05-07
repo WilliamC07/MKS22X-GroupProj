@@ -1,4 +1,6 @@
 # MKS22X-GroupProj
+William Cao:
+5/6/19: Moving ball (bouncing off the wall)
 
-Code Written Independently (5/7)
-Peihua - LivingRock movement, moves in a line and bounces off wall.
+Peihua Huang:
+5/6/19: Moving livingRock (bounces off wall)
