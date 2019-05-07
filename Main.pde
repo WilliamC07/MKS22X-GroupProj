@@ -17,17 +17,18 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
+  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon", "Pikachu", "Moostache", "Rockman"};
   String shape;
   float size;
-  Rock(float x, float y, String shape, float size) {
+  Rock(float x, float y) {
     super(x, y);
-    this.shape = shape;
-    this.size = size;
+    shape = ary[(int)random(ary.length)];
+    size = random(20) + 30;
   }
 
   void display() { 
     /* ONE PERSON WRITE THIS */
-    fill(92, 0, 0);
+    fill(234);
     if(shape.equals("Circle")){
       ellipse(x,y, 20, 20);}
     if(shape.equals("Triangle")){
@@ -36,6 +37,20 @@ class Rock extends Thing {
       makePentagon(x, y);}
      if(shape.equals("Trapezoid")){
        makeTrapezoid(x, y);}
+     if(shape.equals("Hexagon")){
+       makeHexagon(x, y);}
+     if(shape.equals("Pikachu")){
+       image(loadImage("Pikachu.jpg"), x, y, size, size);}
+     if(shape.equals("Moostache")){
+       image(loadImage("Moostache.png"), x, y, size, size);}
+     if(shape.equals("Rockman")){
+       rect(x, y, 20, 20);
+       ellipse(x + 10, y - 10, 10, 10);
+       rect(x - 10, y, 10, 10);
+       rect(x + 20, y, 10, 10);
+       rect(x, y + 20, 10, 10);
+       rect(x + 10, y + 20, 10, 10);
+     }
     fill(255,0,0);
   }
   void makeTriangle(float x, float y){
@@ -49,13 +64,20 @@ class Rock extends Thing {
     rect(x, y, 20, 20);
     triangle(x, y, x, y + 20, x - 20, y + 20);
     triangle(x + 20, y, x + 20, y + 20, x + 40, y + 20);
-}}
+}
+  void makeHexagon(float x, float y){
+    makeTrapezoid(x, y);
+    rect(x, y + 20, 20, 20);
+    triangle(x, y + 40, x - 20, y + 20, x, y + 20);
+    triangle(x + 20, y + 20, x + 20, y + 40, x + 40, y + 20);
+}
+}
 
 public class LivingRock extends Rock implements Moveable {
   float speedx;
   float speedy;
-  LivingRock(float x, float y, String shape, float size) {
-    super(x, y, shape, size);
+  LivingRock(float x, float y) {
+    super(x, y);
     speedx = 5;
     speedy = 2;
   }
@@ -64,7 +86,12 @@ public class LivingRock extends Rock implements Moveable {
       if (this.x < 0 || this.x > width) this.speedx = -this.speedx;
       if (this.y < 0 || this.y > height) this.speedy = -this.speedy;
       this.x = this.x +  this.speedx;
-      this.y = this.y  + this.speedy;
+      // if u want motion modeled by function this.y += f(x) * this.speedy
+      // below makes it look like its vibrating
+      //attempt at spiral of archimedes
+      //this.y += -0.5 * (float) (Math.pow(Math.cos(Math.pow(x*x + y*y, 0.5)), -2) / (Math.pow(x*x + y*y, 0.5)));
+      //this.y = this.y  +    3 * (float) Math.sin(y) * this.speedy + this.speedy;
+      this.y = this.y + this.speedy;
     }
   }
 
@@ -102,7 +129,6 @@ ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 
 void setup() {
-  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid"};
   size(1000, 400);
 
   thingsToDisplay = new ArrayList<Displayable>();
@@ -111,11 +137,11 @@ void setup() {
     Ball b = new Ball(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(b);
     thingsToMove.add(b);
-    Rock r = new Rock(50+random(width-100), 50+random(height-100), ary[(int)random(ary.length)], random(75));
+    Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
   }
 
-  LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100), ary[(int) random(ary.length)], random(75));
+  LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
   thingsToDisplay.add(m);
   thingsToMove.add(m);
 }
