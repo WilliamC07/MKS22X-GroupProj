@@ -17,7 +17,7 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
-  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon", "Pikachu", "Moostache"};
+  String ary[] = {"Circle", "Triangle", "Pentagon", "Trapezoid", "Hexagon", "Pikachu", "Moostache", "Rockman"};
   String shape;
   float size;
   Rock(float x, float y) {
@@ -43,6 +43,14 @@ class Rock extends Thing {
        image(loadImage("Pikachu.jpg"), x, y, size, size);}
      if(shape.equals("Moostache")){
        image(loadImage("Moostache.png"), x, y, size, size);}
+     if(shape.equals("Rockman")){
+       rect(x, y, 20, 20);
+       ellipse(x + 10, y - 10, 10, 10);
+       rect(x - 10, y, 10, 10);
+       rect(x + 20, y, 10, 10);
+       rect(x, y + 20, 10, 10);
+       rect(x + 10, y + 20, 10, 10);
+     }
     fill(255,0,0);
   }
   void makeTriangle(float x, float y){
@@ -80,8 +88,9 @@ public class LivingRock extends Rock implements Moveable {
       this.x = this.x +  this.speedx;
       // if u want motion modeled by function this.y += f(x) * this.speedy
       // below makes it look like its vibrating
-      //this.y = this.y  + this.speedy;
-      //this.y = this.y  +    5 * (float) Math.sin(y) * this.speedy + this.speedy;
+      //attempt at spiral of archimedes
+      //this.y += -0.5 * (float) (Math.pow(Math.cos(Math.pow(x*x + y*y, 0.5)), -2) / (Math.pow(x*x + y*y, 0.5)));
+      //this.y = this.y  +    3 * (float) Math.sin(y) * this.speedy + this.speedy;
       this.y = this.y + this.speedy;
     }
   }
