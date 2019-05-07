@@ -10,6 +10,7 @@ abstract class Ball extends Thing implements Moveable {
     this.collisionColor = collisionColor;
   }
 
+  @Override
   void display() {
     if (collided()) {
       fill(collisionColor);
@@ -18,17 +19,18 @@ abstract class Ball extends Thing implements Moveable {
     }
     ellipse(x, y, this.size, this.size);
   }
-  
-  boolean collided(){
+
+  boolean collided() {
     for (Collideable c : collideables) {
       if (c.isTouching(this)) {
         return true;
       }
     }
-    
+
     return false;
   }
 
+  @Override
   void move() {
     this.x += speed * xDirection;
     this.y += speed * yDirection;
@@ -43,13 +45,22 @@ abstract class Ball extends Thing implements Moveable {
 }
 
 class BallA extends Ball {
-  BallA(float x, float y){
+  BallA(float x, float y) {
     super(x, y, color(255, 0, 0));
+  }
+  
+  @Override
+  void display(){
+    super.display();
+    // add a happy face :)
+    // it will be placed ontop of the circle
+    // subtract half of size to center the image
+    image(loadImage("smiley.png"), x - size / 2, y - size / 2, size, size); 
   }
 }
 
 class BallB extends Ball {
-  BallB(float x, float y){
+  BallB(float x, float y) {
     super(x, y, color(0, 0, 255));
   }
 }
