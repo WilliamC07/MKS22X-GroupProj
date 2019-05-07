@@ -6,21 +6,34 @@ interface Moveable {
   void move();
 }
 
-abstract class Thing implements Displayable {
-  float x, y;//Position of the Thing
+interface Collideable{
+  boolean isTouching(Thing other);
+}
 
-  Thing(float x, float y) {
+abstract class Thing implements Displayable, Collideable {
+  float x, y;//Position of the Thing
+  float radius;
+
+  Thing(float x, float y, float radius) {
     this.x = x;
     this.y = y;
+    this.radius = radius;
   }
+  
+  @Override
+  boolean isTouching(Thing other){
+     // TODO: Finish 
+    return false;
+    
+  }
+  
   abstract void display();
 }
 
 class Rock extends Thing {
-  float size;
   PImage shape;
   Rock(float x, float y) {
-    super(x, y);
+    super(x, y, random(20) + 30);
     PImage img1 = loadImage("rock1.png");
     PImage img2 = loadImage("rock2.png");
     if ((int)random(0,2) % 2 == 1){
@@ -29,7 +42,6 @@ class Rock extends Thing {
     else{
       shape = img2;
     }
-    size = random(20) + 30;
   }
 
   void display() { 
