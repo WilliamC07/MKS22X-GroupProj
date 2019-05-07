@@ -47,8 +47,8 @@ class Rock extends Thing {
   }
 
   void display() { 
-    /* ONE PERSON WRITE THIS */
-    image(shape, x, y, size, size);
+    // subtract half of size to center the image
+    image(shape, x - size / 2, y - size / 2, size, size);
   }
   void makeTriangle(float x, float y){
     triangle(x - 20, y + 20, x, y, x + 20, y + 20);
