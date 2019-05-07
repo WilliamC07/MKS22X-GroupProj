@@ -32,8 +32,10 @@ abstract class Thing implements Displayable, Collideable {
 
 class Rock extends Thing {
   PImage shape;
+  float size;
   Rock(float x, float y) {
     super(x, y, random(20) + 30);
+    size = random(20) + 30;
     PImage img1 = loadImage("rock1.png");
     PImage img2 = loadImage("rock2.png");
     if ((int)random(0,2) % 2 == 1){
@@ -76,6 +78,15 @@ public class LivingRock extends Rock implements Moveable {
     speedx = 5;
     speedy = 2;
   }
+  void display(){
+    super.display();
+    fill(255);
+    ellipse(x + size / 6, y + 10, 10, 10);
+    ellipse(x + 2 * size / 3, y + 10, 10, 10);
+    fill(0);
+    ellipse(x + size /6, y + 10, 2, 2);
+    ellipse(x + 2 * size/ 3, y + 10, 2, 2);
+  }
   void move() {
       /* ONE PERSON WRITE THIS */
       if (this.x < 0 || this.x > width) this.speedx = -this.speedx;
@@ -94,7 +105,7 @@ class Ball extends Thing implements Moveable {
   float speed, xDirection, yDirection;
   color ballc;
   Ball(float x, float y) {
-    super(x, y);
+    super(x, y, 1);
     speed = random(20);
     this.xDirection = random(2) == 0 ? 1 : -1;
     this.yDirection = random(2) == 0 ? 1 : -1;
