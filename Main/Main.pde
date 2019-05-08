@@ -65,22 +65,24 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     /* ONE PERSON WRITE THIS */
-    if (this.x < 0 || this.x > width || this.y < 0 || this.y > height){
+    float rad = size/2;
+    if (this.x < rad || this.x > width - rad|| this.y < rad || this.y > height - rad){
       this.backward = true;
+      a = random(0.5,5);
     }
-    if (this.t <= 0){
-      this.t = 0.1;
+    if (this.t < 0){
+      this.t = 0;
       this.backward = false;
     }
-    this.t = this.t + 0.1;
     if (backward){
-      if (this.t > 0) this.t = this.t - 0.2;
-      this.x = this.x - sqrt(abs(t)) * cos(abs(t)) * abs(a);
-      this.y = this.y - sqrt(abs(t)) * sin(abs(t)) * abs(a);
+      this.x = this.x - sqrt(t) * cos(t) * abs(a);
+      this.y = this.y - sqrt(t) * sin(t) * abs(a);
+      this.t = this.t - 0.1;
     }
     else{
-      this.x = this.x + sqrt(abs(t)) * cos(abs(t)) * abs(a);
-      this.y = this.y + sqrt(abs(t)) * sin(abs(t)) * abs(a);
+      this.t = this.t + 0.1;
+      this.x = this.x + sqrt(t) * cos(t) * abs(a);
+      this.y = this.y + sqrt(t) * sin(t) * abs(a);
     }
 
     // if u want motion modeled by function this.y += f(x) * this.speedy
