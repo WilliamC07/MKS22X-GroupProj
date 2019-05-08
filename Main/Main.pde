@@ -50,48 +50,45 @@ public class LivingRock extends Rock implements Moveable {
   float a;
   float pupils = 0;
   float contract = 1;
-  boolean backward;
+  float dir;
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
     t = 0;
     a = random(1, 5);
+    dir = 1;
   }
-void display() {
+  void display() {
     super.display();
     fill(255);
     ellipse(x + size / 6 - size / 2, y + 10 - size / 2, 10, 10);
     ellipse(x + 2 * size / 3 - size / 2, y + 10 - size / 2, 10, 10);
     fill(0);
     pupils += contract * 0.25;
-    if(pupils >= 5){
-      contract = -1;}
-    if(pupils <= 0){
-      contract = 1;}
+    if (pupils >= 5) {
+      contract = -1;
+    }
+    if (pupils <= 0) {
+      contract = 1;
+    }
     ellipse(x + size /6 - size / 2, y + 10 - size / 2, 2 + pupils * contract, 2 + pupils * contract);
     ellipse(x + 2 * size/ 3 - size / 2, y + 10 - size / 2, 2 + pupils * contract, 2 + pupils * contract);
-    
   }
   void move() {
     /* ONE PERSON WRITE THIS */
+    this.x = this.x - this.dir * sqrt(t) * cos(t) * abs(a);
+    this.y = this.y - this.dir *sqrt(t) * sin(t) * abs(a);
+    this.t = this.t + this.dir * 0.1;
     float rad = size/2;
-    if (this.x < rad || this.x > width - rad|| this.y < rad || this.y > height - rad){
-      this.backward = true;
-      a = random(0.5,5);
+    if (this.x < rad || this.x > width - rad|| this.y < rad || this.y > height - rad) {
+      this.dir = -1;
+      a = random(0.5, 5);
     }
-    if (this.t < 0){
+    else if (this.t < 0) {
       this.t = 0;
-      this.backward = false;
+      this.dir = 1;
     }
-    if (backward){
-      this.x = this.x - sqrt(t) * cos(t) * abs(a);
-      this.y = this.y - sqrt(t) * sin(t) * abs(a);
-      this.t = this.t - 0.1;
-    }
-    else{
-      this.t = this.t + 0.1;
-      this.x = this.x + sqrt(t) * cos(t) * abs(a);
-      this.y = this.y + sqrt(t) * sin(t) * abs(a);
-    }
+    
+
 
     // if u want motion modeled by function this.y += f(x) * this.speedy
     // below makes it look like its vibrating
