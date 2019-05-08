@@ -9,7 +9,8 @@ Peihua Huang:
 
 Fakharyar Khan:  
 5/6/19: Display Rock (multiple shapes)  
-5/7/19: Living rock eyes  
+5/7/19: Living rock eyes
+5/8/19: Getting images to conform to shapes
 
 Hong Wei Chen:  
 5/6/19: Added display for ball  
