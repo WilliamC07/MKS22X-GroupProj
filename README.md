@@ -12,5 +12,5 @@ Fakharyar Khan:
 5/7/19: Living rock eyes  
 
 Hong Wei Chen:
-5/6/19: Added display for ball
+5/6/19: Added display for ball  
 5/7/19: Added different colors to ball  
