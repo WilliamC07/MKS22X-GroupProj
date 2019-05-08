@@ -3,9 +3,9 @@ William Cao:
 5/6/19: Moving ball (bouncing off the wall)  
 5/7/19: Implemented collision; added Ball subclasses
 
-Peihua Huang:
+Peihua Huang:  
 5/6/19: Moving LivingRock (bounces off wall)  
-5/7/19: Implemented the rock changes  
+5/7/19: Implemented the rock changes, updated setup    
 
 Fakharyar Khan:  
 5/6/19: Display Rock (multiple shapes)  
