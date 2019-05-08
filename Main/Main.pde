@@ -64,8 +64,8 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     /* ONE PERSON WRITE THIS */
-    if (this.x < 0 || this.x > width) this.speedx = -this.speedx;
-    if (this.y < 0 || this.y > height) this.speedy = -this.speedy;
+    if (this.x < size / 2 || this.x > width - size / 2) this.speedx = -this.speedx;
+    if (this.y < size / 2 || this.y > height - size / 2) this.speedy = -this.speedy;
     this.x = this.x +  this.speedx;
     // if u want motion modeled by function this.y += f(x) * this.speedy
     // below makes it look like its vibrating
