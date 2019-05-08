@@ -90,11 +90,12 @@ void setup() {
   collideables = new ArrayList<Collideable>();
   PImage img1 = loadImage("rock1.png");
   PImage img2 = loadImage("rock2.png");
+  PImage ballA = loadImage("smiley.png");
   for (int i = 0; i < 10; i++) {
 
     Ball b;
     if (i < 5) {
-      b = new BallA(50+random(width-100), 50+random(height-100));
+      b = new BallA(50+random(width-100), 50+random(height-100), ballA);
       // to be updated with subclasses of Ball
     } else {
       b = new BallB(50+random(width-100), 50+random(height-100));

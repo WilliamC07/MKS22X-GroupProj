@@ -45,8 +45,10 @@ abstract class Ball extends Thing implements Moveable {
 }
 
 class BallA extends Ball {
-  BallA(float x, float y) {
+  PImage image;
+  BallA(float x, float y, PImage img) {
     super(x, y, color(255, 0, 0));
+    image = img;
   }
   
   @Override
@@ -55,7 +57,7 @@ class BallA extends Ball {
     // add a happy face :)
     // it will be placed ontop of the circle
     // subtract half of size to center the image
-    image(loadImage("smiley.png"), x - size / 2, y - size / 2, size, size); 
+    image(image, x - size / 2, y - size / 2, size, size); 
   }
 }
 
