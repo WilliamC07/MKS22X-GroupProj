@@ -57,11 +57,11 @@ public class LivingRock extends Rock implements Moveable {
   void display() {
     super.display();
     fill(255);
-    ellipse(x + size / 6, y + 10, 10, 10);
-    ellipse(x + 2 * size / 3, y + 10, 10, 10);
+    ellipse(x + size / 6 - size / 2, y + 10 - size / 2, 10, 10);
+    ellipse(x + 2 * size / 3 - size / 2, y + 10 - size / 2, 10, 10);
     fill(0);
-    ellipse(x + size /6, y + 10, 2, 2);
-    ellipse(x + 2 * size/ 3, y + 10, 2, 2);
+    ellipse(x + size /6 - size / 2, y + 10 - size / 2, 2, 2);
+    ellipse(x + 2 * size/ 3 - size / 2, y + 10 - size / 2, 2, 2);
   }
   void move() {
     /* ONE PERSON WRITE THIS */
