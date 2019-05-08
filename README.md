@@ -2,6 +2,7 @@
 William Cao:  
 5/6/19: Moving ball (bouncing off the wall)  
 5/7/19: Implemented collision; added Ball subclasses
+5/8/19: Half of Thing no longer goes off screen when it collides with the screen border
 
 Peihua Huang:  
 5/6/19: Moving LivingRock (bounces off wall)  

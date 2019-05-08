@@ -35,10 +35,10 @@ abstract class Ball extends Thing implements Moveable {
     this.x += speed * xDirection;
     this.y += speed * yDirection;
 
-    if (this.x < 0 || this.x > width) {
+    if (this.x < size / 2 || this.x > width - size / 2) {
       xDirection *= -1;
     }
-    if (this.y < 0 || this.y > height) {
+    if (this.y < size / 2 || this.y > height - size / 2) {
       yDirection *= -1;
     }
   }

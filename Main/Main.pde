@@ -65,6 +65,7 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     /* ONE PERSON WRITE THIS */
+<<<<<<< HEAD
     if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || y < 0){
       this.backward = !this.backward;
     }
@@ -77,6 +78,11 @@ public class LivingRock extends Rock implements Moveable {
       this.x = this.x + sqrt(t) * cos(t) * abs(a);
       this.y = this.y + sqrt(t) * sin(t) * abs(a);
     }
+=======
+    if (this.x < size / 2 || this.x > width - size / 2) this.speedx = -this.speedx;
+    if (this.y < size / 2 || this.y > height - size / 2) this.speedy = -this.speedy;
+    this.x = this.x +  this.speedx;
+>>>>>>> c2c2e867a4f389cba6fdcd1548f8ec198680a952
     // if u want motion modeled by function this.y += f(x) * this.speedy
     // below makes it look like its vibrating
     //attempt at spiral of archimedes
