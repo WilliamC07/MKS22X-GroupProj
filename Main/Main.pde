@@ -50,24 +50,6 @@ class Rock extends Thing {
     // subtract half of size to center the image
     image(shape, x - size / 2, y - size / 2, size, size);
   }
-  void makeTriangle(float x, float y){
-    triangle(x - 20, y + 20, x, y, x + 20, y + 20);
-}
-  void makePentagon(float x, float y){
-    makeTriangle(x,y);
-    rect(x - 20, y + 20, 40, 40);
-}
-  void makeTrapezoid(float x, float y){
-    rect(x, y, 20, 20);
-    triangle(x, y, x, y + 20, x - 20, y + 20);
-    triangle(x + 20, y, x + 20, y + 20, x + 40, y + 20);
-}
-  void makeHexagon(float x, float y){
-    makeTrapezoid(x, y);
-    rect(x, y + 20, 20, 20);
-    triangle(x, y + 40, x - 20, y + 20, x, y + 20);
-    triangle(x + 20, y + 20, x + 20, y + 40, x + 40, y + 20);
-}
 }
 
 public class LivingRock extends Rock implements Moveable {
