@@ -6,7 +6,7 @@ William Cao:
 
 Peihua Huang:  
 5/6/19: Moving LivingRock (bounces off wall)  
-5/7/19: Implemented the rock changes, updated setup   
+5/7/19: Implemented the rock changes, updated setup. Fakharyar and I worked together so he didn't have any commits in class.   
 5/8/19: Fixed loading images for Ball and LivingRock, changing the path of LivingRock into a spiral and kept LivingRock on the screen
 
 Fakharyar Khan:  
