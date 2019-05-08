@@ -5,7 +5,8 @@ William Cao:
 
 Peihua Huang:  
 5/6/19: Moving LivingRock (bounces off wall)  
-5/7/19: Implemented the rock changes, updated setup    
+5/7/19: Implemented the rock changes, updated setup   
+5/8/19: Fixed loading images for Ball and LivingRock, changing the path of LivingRock 
 
 Fakharyar Khan:  
 5/6/19: Display Rock (multiple shapes)  
