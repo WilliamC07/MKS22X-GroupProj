@@ -48,20 +48,28 @@ class Rock extends Thing {
 public class LivingRock extends Rock implements Moveable {
   float t;
   float a;
+  float pupils = 0;
+  float contract = 1;
   boolean backward;
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
     t = 0;
     a = random(1, 5);
   }
-  void display() {
+void display() {
     super.display();
     fill(255);
     ellipse(x + size / 6 - size / 2, y + 10 - size / 2, 10, 10);
     ellipse(x + 2 * size / 3 - size / 2, y + 10 - size / 2, 10, 10);
     fill(0);
-    ellipse(x + size /6 - size / 2, y + 10 - size / 2, 2, 2);
-    ellipse(x + 2 * size/ 3 - size / 2, y + 10 - size / 2, 2, 2);
+    pupils += contract * 0.25;
+    if(pupils >= 5){
+      contract = -1;}
+    if(pupils <= 0){
+      contract = 1;}
+    ellipse(x + size /6 - size / 2, y + 10 - size / 2, 2 + pupils * contract, 2 + pupils * contract);
+    ellipse(x + 2 * size/ 3 - size / 2, y + 10 - size / 2, 2 + pupils * contract, 2 + pupils * contract);
+    
   }
   void move() {
     /* ONE PERSON WRITE THIS */
