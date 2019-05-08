@@ -46,12 +46,13 @@ class Rock extends Thing {
 }
 
 public class LivingRock extends Rock implements Moveable {
-  float speedx;
-  float speedy;
+  float t;
+  float a;
+  boolean backward;
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
-    speedx = 5;
-    speedy = 2;
+    t = 0;
+    a = random(1, 5);
   }
   void display() {
     super.display();
@@ -64,15 +65,29 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     /* ONE PERSON WRITE THIS */
+<<<<<<< HEAD
+    if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || y < 0){
+      this.backward = !this.backward;
+    }
+    this.t = this.t + 0.1;
+    if (backward){
+      this.x = this.x - sqrt(t) * cos(t) * abs(a);
+      this.y = this.y - sqrt(t) * sin(t) * abs(a);
+    }
+    else{
+      this.x = this.x + sqrt(t) * cos(t) * abs(a);
+      this.y = this.y + sqrt(t) * sin(t) * abs(a);
+    }
+=======
     if (this.x < size / 2 || this.x > width - size / 2) this.speedx = -this.speedx;
     if (this.y < size / 2 || this.y > height - size / 2) this.speedy = -this.speedy;
     this.x = this.x +  this.speedx;
+>>>>>>> c2c2e867a4f389cba6fdcd1548f8ec198680a952
     // if u want motion modeled by function this.y += f(x) * this.speedy
     // below makes it look like its vibrating
     //attempt at spiral of archimedes
     //this.y += -0.5 * (float) (Math.pow(Math.cos(Math.pow(x*x + y*y, 0.5)), -2) / (Math.pow(x*x + y*y, 0.5)));
     //this.y = this.y  +    3 * (float) Math.sin(y) * this.speedy + this.speedy;
-    this.y = this.y + this.speedy;
   }
 }
 
