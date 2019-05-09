@@ -142,11 +142,15 @@ void setup() {
   thingsToDisplay.add(m);
   thingsToMove.add(m);
   collideables.add(m);
+  background(255);
 }
 
 void draw() {
-  background(255);
-
+  //background(255);
+  fill(255,255,255,40);
+  noStroke();
+  rect(0,0,width,height);
+  
   for (Displayable thing : thingsToDisplay) {
 
     thing.display();
