@@ -17,3 +17,4 @@ Fakharyar Khan:
 Hong Wei Chen:  
 5/6/19: Added display for ball  
 5/7/19: Added different colors to ball  
+5/8/19: Added trail for moving objects  
