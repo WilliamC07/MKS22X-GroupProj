@@ -51,11 +51,13 @@ public class LivingRock extends Rock implements Moveable {
   float pupils = 0;
   float contract = 1;
   float dir;
+  float yinc;
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
     t = 0;
-    a = random(1, 5);
+    a = random(1, 3);
     dir = 1;
+    yinc = 0.1;
   }
   void display() {
     super.display();
@@ -77,15 +79,18 @@ public class LivingRock extends Rock implements Moveable {
     /* ONE PERSON WRITE THIS */
     this.x = this.x - this.dir * sqrt(t) * cos(t) * abs(a);
     this.y = this.y - this.dir *sqrt(t) * sin(t) * abs(a);
-    this.t = this.t + this.dir * 0.1;
+    this.t = this.t + this.yinc;
     float rad = size/2;
     if (this.x < rad || this.x > width - rad|| this.y < rad || this.y > height - rad) {
-      this.dir = -1;
-      a = random(0.5, 5);
+      if (this.dir == -1){
+        this.yinc = -this.yinc;
+      }
+      this.dir = -this.dir;
     }
     else if (this.t < 0) {
       this.t = 0;
-      this.dir = 1;
+      this.yinc = 0.1;
+      this.dir = -this.dir;
     }
     
 
