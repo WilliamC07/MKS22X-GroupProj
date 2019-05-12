@@ -140,9 +140,9 @@ void setup() {
   }
   LivingRock m;
   if ((int)random(0, 2) % 2 == 1) {
-    m = new LivingRock(50+random(width-100), 50+random(height-100), img1);
+    m = new LivingRock(width / 4 + random(width / 2), height / 4 + random(height / 2), img1);
   } else {
-    m = new LivingRock(50+random(width-100), 50+random(height-100), img2);
+    m = new LivingRock(width / 4 + random(width / 2), height / 4 + random(height / 2), img2);
   }
   thingsToDisplay.add(m);
   thingsToMove.add(m);
