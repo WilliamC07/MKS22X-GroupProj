@@ -44,6 +44,8 @@ abstract class Ball extends Thing implements Moveable {
   }
 }
 
+
+// happy face ball
 class BallA extends Ball {
   PImage image;
   BallA(float x, float y, PImage img) {
@@ -61,19 +63,43 @@ class BallA extends Ball {
   }
 }
 
+
+// regular ball with unique motion
 class BallB extends Ball {
+  float rad = 0;
+  float baselineY = 0;
+  float baselineX = 0;
+  boolean fromTop = false;
+  
   BallB(float x, float y) {
     super(x, y, color(0, 0, 255));
+    this.baselineY = this.y;
+    this.baselineX = this.x;
   }
+  
   @Override
-    void display() {
-    if (collided()) {
-      fill(collisionColor);
-      xDirection *= -1;
-      yDirection *= -1;
-    } else {
-      fill(this.ballc);
+  void move(){
+    this.rad += .02;
+    
+    if(fromTop){
+      this.x = this.baselineX + 100 * sin(rad);
+      this.y += 2;
+    }else{
+      // left to right
+      this.x += 2;
+      this.y = this.baselineY + 100 * sin(rad);
     }
-    ellipse(x, y, this.size, this.size);
+    
+    // go off screen means we appear on the top of the screen down or left side
+    if (this.x > width - size && !fromTop) {
+      fromTop = !fromTop;
+      this.y = 0 - size;
+      this.x = random(width);
+    }
+    if(this.y > height - size && fromTop){
+      fromTop = !fromTop;
+      this.y = random(height);
+      this.x = 0 - size;
+    }
   }
 }
