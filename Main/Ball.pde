@@ -30,18 +30,7 @@ abstract class Ball extends Thing implements Moveable {
     return false;
   }
 
-  @Override
-    void move() {
-    this.x += speed * xDirection;
-    this.y += speed * yDirection;
-
-    if (this.x < size / 2 || this.x > width - size / 2) {
-      xDirection *= -1;
-    }
-    if (this.y < size / 2 || this.y > height - size / 2) {
-      yDirection *= -1;
-    }
-  }
+  abstract void move();
 }
 
 
@@ -54,12 +43,36 @@ class BallA extends Ball {
   }
 
   @Override
-    void display() {
+  void display() {
     super.display();
     // add a happy face :)
     // it will be placed ontop of the circle
     // subtract half of size to center the image
     image(image, x - size / 2, y - size / 2, size, size);
+  }
+  
+  @Override
+  void move(){
+    this.x += speed * xDirection;
+    this.y += speed * yDirection;
+    // when we reach the edge of the screen become small and disappear
+    if (this.x < size / 2 || this.x > width - size / 2) {
+      this.size -= 5;
+    }
+    if (this.y < size / 2 || this.y > height - size / 2) {
+      this.size -= 5;
+    }
+    
+    // once we disappear, teleport to a random spot on the screen and return
+    // back to size and opposite direction
+    if(size <= 5){
+      size = 50;
+      // focus more on appear at the middle
+      this.x = width / 4 + random(width / 2);
+      this.y = height / 4 + random(height / 2);
+      this.xDirection *= -1 * random(.5, 1.25);
+      this.yDirection *= -1 * random(.5, 1.25);
+    }
   }
 }
 
