@@ -22,5 +22,5 @@ Hong Wei Chen:
 5/8/19: Added trail for moving objects  
 
 Cody Bagwandeen:
-5/8/19 Made the one of the Ball types bounce of the rocks when they collided instead of changing its color
-5/12/19 Made LivingRock spawn in a random location
+5/8/19: Made the one of the Ball types bounce of the rocks when they collided instead of changing its color
+5/12/19: Made LivingRock spawn in a random location
