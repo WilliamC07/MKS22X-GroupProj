@@ -17,7 +17,7 @@ Fakharyar Khan:
 5/8/19: Getting images to conform to shapes
 
 Hong Wei Chen:  
-5/6/19: Added display for ball 
+5/6/19: Added display for ball   
 5/7/19: Added different colors to ball (pair programming with William)    
 5/8/19: Added trail for moving objects  
 5/12/19: Added extra display for subclass of ball  
