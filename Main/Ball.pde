@@ -99,6 +99,14 @@ class BallB extends Ball {
   }
   
   @Override
+  void display(){
+    super.display();
+    fill(255);
+    text("i love u",x-20,y);
+    text("3000", x-10, y+15);
+  }
+  
+  @Override
   void move(){
     this.rad += .02;
     
