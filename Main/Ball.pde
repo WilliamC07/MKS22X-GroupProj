@@ -70,8 +70,16 @@ class BallA extends Ball {
       // focus more on appear at the middle
       this.x = width / 4 + random(width / 2);
       this.y = height / 4 + random(height / 2);
-      this.xDirection *= -1 * random(.5, 1.25);
-      this.yDirection *= -1 * random(.5, 1.25);
+      this.xDirection *= -1 * random(.5, 1.5);
+      this.yDirection *= -1 * random(.5, 1.5);
+      
+      // cap the speed
+      if(abs(xDirection) > 3){
+        xDirection = xDirection > 0 ? 3 : -3;
+      }
+      if(abs(yDirection) > 3){
+        yDirection = yDirection > 0 ? 3 : -3; 
+      }
     }
   }
 }
@@ -104,12 +112,12 @@ class BallB extends Ball {
     }
     
     // go off screen means we appear on the top of the screen down or left side
-    if (this.x > width - size && !fromTop) {
+    if (this.x > width + size && !fromTop) {
       fromTop = !fromTop;
       this.y = 0 - size;
       this.x = random(width);
     }
-    if(this.y > height - size && fromTop){
+    if(this.y > height + size && fromTop){
       fromTop = !fromTop;
       this.y = random(height);
       this.x = 0 - size;

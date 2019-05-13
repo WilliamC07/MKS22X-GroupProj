@@ -110,7 +110,7 @@ ArrayList<Moveable> thingsToMove;
 ArrayList<Collideable> collideables;
 
 void setup() {
-  size(1000, 400);
+  size(1000, 800);
 
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
